@@ -3,6 +3,7 @@ package com.vozniak.composition.presentation
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.vozniak.composition.databinding.ActivityMainBinding
+import com.vozniak.composition.domain.usecases.GenerateQuestionsUseCase
 
 class MainActivity : AppCompatActivity() {
     lateinit var binding: ActivityMainBinding
@@ -10,5 +11,6 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
     }
 }
