@@ -1,4 +1,4 @@
-package com.vozniak.composition
+package com.vozniak.composition.presentation
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
