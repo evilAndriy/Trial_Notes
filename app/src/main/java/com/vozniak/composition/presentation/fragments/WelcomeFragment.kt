@@ -32,10 +32,7 @@ class WelcomeFragment : Fragment() {
         _binding = null
     }
 
-    override fun onDestroy() {
-        super.onDestroy()
-        binding.tvTitle.setText("asdasd")
-    }
+
   private fun initFragment(fragment: Fragment) {
         requireActivity().supportFragmentManager.
                 beginTransaction().
