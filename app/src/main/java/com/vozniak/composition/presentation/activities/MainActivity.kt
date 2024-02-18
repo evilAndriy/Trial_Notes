@@ -1,4 +1,4 @@
-package com.vozniak.composition.presentation
+package com.vozniak.composition.presentation.activities
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -11,6 +11,8 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
     }
+
+
+
 }
