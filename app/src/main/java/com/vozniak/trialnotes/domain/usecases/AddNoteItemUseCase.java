@@ -8,7 +8,7 @@ public class AddNoteItemUseCase {
     public AddNoteItemUseCase(NoteListRepository noteListRepository) {
         this.noteListRepository = noteListRepository;
     }
-    void addNoteItem(NoteItem noteItem) {
+    public void addNoteItem(NoteItem noteItem) {
         noteListRepository.addNoteItem(noteItem);
     }
 

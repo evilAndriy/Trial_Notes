@@ -5,10 +5,11 @@ import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
+import java.io.Serializable;
 import java.util.Objects;
 
 @Entity(tableName = "note_item")
-public class NoteItem {
+public class NoteItem implements Serializable {
     @PrimaryKey(autoGenerate = true)
     private Integer id;
 
@@ -19,8 +20,8 @@ public class NoteItem {
     private String content;
 
 
-    public NoteItem(Integer id, String title, String content) {
-        this.id = id;
+    public NoteItem( String title, String content) {
+
         this.title = title;
         this.content = content;
 

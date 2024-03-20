@@ -10,4 +10,10 @@ public interface NoteListRepository {
 
     void addNoteItem(NoteItem noteItem);
     LiveData<List<NoteItem>> getNoteList();
+
+    public void updateNoteItem(NoteItem noteItem);
+
+    // Метод для видалення запису
+    public void deleteNoteItem(int id);
+
 }
