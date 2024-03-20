@@ -42,14 +42,15 @@ public class NoteFragment extends Fragment  {
         initRecyclerView();
         MainViewModelFactory factory = new MainViewModelFactory(dao);
         this.viewModel = new ViewModelProvider(this, factory).get(MainViewModel.class);
-
-        viewModel.getNoteList().observe(getViewLifecycleOwner(), noteList -> {
-            noteAdapter.submitList(noteList);
-        });
+        observer();
         initClickAdd(CreateNoteFragment.createFragmentWithoutArguments());
     }
 
-
+    private void observer(){
+        viewModel.getNoteList().observe(getViewLifecycleOwner(), noteList -> {
+            noteAdapter.submitList(noteList);
+        });
+    }
 
     private void createRepository() {
         MainDB database = MainDB.getDataBase(requireContext().getApplicationContext());
@@ -61,7 +62,13 @@ public class NoteFragment extends Fragment  {
         this.noteAdapter = new NoteListAdapter(new NoteListDiffCallback(), new NoteListAdapter.InitClickDelete() {
             @Override
             public void initClick(Integer id) {
-                viewModel.deleteNoteItem(id);
+                Thread thread = new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        viewModel.deleteNoteItem(id);
+                    }
+                });
+                thread.start();
             }
         }, new NoteListAdapter.InitClickUpdate() {
             @Override

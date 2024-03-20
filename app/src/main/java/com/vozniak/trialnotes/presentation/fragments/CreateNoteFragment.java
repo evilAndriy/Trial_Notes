@@ -71,15 +71,26 @@ public class CreateNoteFragment extends Fragment {
                    }
                    String name = binding.MyNameText.getText().toString();
                    String note = binding.MyNote.getText().toString();
-                   viewModel.addNoteItem(new NoteItem(name, note));
+                   Thread thread = new Thread(new Runnable() {
+                       @Override
+                       public void run() {
+                           viewModel.addNoteItem(new NoteItem(name, note));
+                       }
+                   });
+                   thread.start();
+
                    requireActivity().getSupportFragmentManager().popBackStack();
                } else {
-                   new Thread(new Runnable() {
+                   noteItem.setTitle(binding.textName.getEditText().getText().toString());
+                   noteItem.setContent(binding.MyNote.getText().toString());
+                   Thread thread = new Thread(new Runnable() {
                        @Override
                        public void run() {
                            viewModel.updateNoteItem(noteItem);
                        }
-                   }).start();
+                   });
+                   thread.start();
+
                    requireActivity().getSupportFragmentManager().popBackStack();
                    Toast.makeText(getContext(), "updating", Toast.LENGTH_SHORT).show();
 
